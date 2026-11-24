@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0e1013">
+<meta name="description" content="Alex — сайты и Telegram-боты для бизнеса. Лендинги, магазины, запись к мастеру. Цены от 10 000 ₽, срок от 5 дней.">
+<title>Alex — сайты и Telegram-боты · от 10 000 ₽</title>
+<style>
+:root{
+  --bg:#0e1013; --panel:#15181d; --panel-2:#1b1f26; --line:#262b33;
+  --text:#e9ebee; --muted:#a6adb8; --accent:#c8f169; --accent-ink:#161a06;
+  --radius:14px; --max:1060px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;background:var(--bg);color:var(--text)}
+a{color:inherit}
+::selection{background:var(--accent);color:var(--accent-ink)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.container{max-width:var(--max);margin:0 auto;padding:0 20px}
+section{padding:72px 0}
+[id]{scroll-margin-top:84px}
+.kicker{display:block;color:var(--accent);font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px}
+h2{font-size:clamp(26px,4vw,36px);line-height:1.15;margin-bottom:10px}
+.section-sub{color:var(--muted);max-width:600px;margin-bottom:36px}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-ink);font-weight:600;font-size:16px;padding:12px 22px;border-radius:10px;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:background .15s}
+.btn:hover{background:#d9fa8b}
+.btn-ghost{background:transparent;color:var(--text);border-color:var(--line)}
+.btn-ghost:hover{background:var(--panel-2)}
+.btn-sm{padding:9px 16px;font-size:14px}
+
+/* Шапка */
+header{position:sticky;top:0;z-index:50;background:rgba(14,16,19,.97);border-bottom:1px solid var(--line)}
+.header-inner{display:flex;align-items:center;gap:20px;height:64px}
+.logo{font-weight:700;font-size:18px;text-decoration:none}
+.logo i{color:var(--accent);font-style:normal}
+nav{display:flex;gap:22px;margin-left:auto}
+nav a{color:var(--muted);text-decoration:none;font-size:15px;transition:color .15s}
+nav a:hover{color:var(--text)}
+.clock{color:var(--muted);font-size:13px;white-space:nowrap}
+.clock b{color:var(--text);font-weight:600;font-variant-numeric:tabular-nums}
+.burger{display:none;width:40px;height:40px;border:1px solid var(--line);border-radius:10px;background:var(--panel);cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+.burger span{display:block;width:16px;height:2px;border-radius:2px;background:var(--text)}
+
+/* Первый экран */
+.hero{padding:84px 0 72px}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border:1px solid var(--line);border-radius:999px;color:var(--muted);font-size:13px;margin-bottom:22px}
+.badge i{width:8px;height:8px;border-radius:50%;background:#5ad06e}
+h1{font-size:clamp(34px,6vw,56px);line-height:1.08;max-width:760px;letter-spacing:-.01em}
+.lead{color:var(--muted);font-size:18px;max-width:640px;margin:18px 0 28px}
+.hl{color:var(--accent);font-weight:700}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.hero-facts{display:flex;gap:32px;flex-wrap:wrap;margin-top:44px}
+.hero-facts b{display:block;font-size:20px}
+.hero-facts span{color:var(--muted);font-size:13px}
+
+/* Карточки и сетки */
+.grid{display:grid;gap:16px}
+.grid-3{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+.card h3{font-size:18px;margin-bottom:8px}
+.card p{color:var(--muted);font-size:15px}
+
+/* Работы */
+.works-grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.work{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.shot{aspect-ratio:16/9;padding:18px;display:flex;flex-direction:column;color:#fff;border-bottom:1px solid var(--line)}
+.shot-a{background:linear-gradient(135deg,#243b2b,#101d14)}
+.shot-b{background:linear-gradient(135deg,#2b2f4a,#14162b)}
+.shot-c{background:linear-gradient(135deg,#4a3a22,#241a0e)}
+.shot-d{background:linear-gradient(135deg,#1f3a4a,#0f1c26)}
+.shot-bar{display:flex;gap:6px;margin-bottom:14px}
+.shot-bar i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.4)}
+.shot-name{font-weight:800;font-size:clamp(22px,3vw,28px);letter-spacing:.03em}
+.shot-mock{margin-top:auto;display:grid;gap:8px}
+.shot-mock span{display:block;height:8px;border-radius:4px;background:rgba(255,255,255,.28)}
+.shot-mock em{display:block;width:96px;height:26px;border-radius:6px;background:rgba(255,255,255,.85);margin-top:4px}
+.work-body{padding:20px 22px 22px}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.tag{font-size:12px;color:var(--muted);border:1px solid var(--line);padding:3px 10px;border-radius:999px}
+.work-body h3{font-size:19px;margin-bottom:6px}
+.work-body p{color:var(--muted);font-size:15px}
+.work-meta{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:16px;padding-top:14px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
+.work-meta b{color:var(--accent)}
+.work-link{color:var(--accent);text-decoration:none;font-weight:600;white-space:nowrap}
+.work-link:hover{text-decoration:underline}
+
+/* Цены */
+.price-card{display:flex;flex-direction:column}
+.plan-badge{align-self:flex-start;font-size:12px;font-weight:700;color:var(--accent-ink);background:var(--accent);padding:2px 10px;border-radius:999px;margin-bottom:10px}
+.plan-featured{border-color:var(--accent)}
+.price{font-size:34px;font-weight:800;margin:6px 0 2px}
+.price small{font-size:15px;font-weight:500;color:var(--muted)}
+.term{color:var(--muted);font-size:14px;margin-bottom:16px}
+.checks{list-style:none;display:grid;gap:8px;margin-bottom:22px;font-size:15px;color:#cfd4db}
+.checks li::before{content:"✓";color:var(--accent);font-weight:700;margin-right:8px}
+.price-card .btn{margin-top:auto;text-align:center}
+.pricing-note{margin-top:18px;color:var(--muted);font-size:14px;max-width:720px}
+
+/* Обо мне */
+.about{display:grid;grid-template-columns:1.5fr 1fr;gap:16px}
+.about-text p+p{margin-top:12px}
+.facts{display:grid;gap:14px}
+.facts b{display:block;font-size:20px}
+.facts span{color:var(--muted);font-size:13px}
+
+/* Отзывы */
+.review-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.stars{color:var(--accent);letter-spacing:2px;font-size:14px}
+.review-who{margin-top:12px;color:var(--muted);font-size:13px}
+
+/* Шаги */
+.steps{list-style:none;counter-reset:step;display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.steps li{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+.steps li::before{counter-increment:step;content:"0" counter(step);display:block;color:var(--accent);font-weight:800;font-size:14px;margin-bottom:10px}
+.steps h3{font-size:17px;margin-bottom:6px}
+.steps p{color:var(--muted);font-size:15px}
+
+/* Вопросы */
+.faq{display:grid;gap:10px;max-width:760px}
+details{background:var(--panel);border:1px solid var(--line);border-radius:12px}
+summary{cursor:pointer;padding:16px 20px;font-weight:600;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--accent);font-size:20px;font-weight:400}
+details[open] summary::after{content:"–"}
+details p{padding:0 20px 16px;color:var(--muted);font-size:15px}
+
+/* Контакт */
+.contact-card{background:linear-gradient(135deg,#1a2210,#15181d);border:1px solid var(--line);border-radius:20px;padding:clamp(28px,5vw,56px);text-align:center}
+.contact-card p{color:var(--muted);max-width:520px;margin:10px auto 0}
+.contact-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:26px}
+.contact-note{font-size:13px;margin-top:16px}
+
+/* Подвал */
+footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:14px}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+footer a{color:var(--muted);text-decoration:none}
+footer a:hover{color:var(--text)}
+
+@media (max-width:860px){
+  .about{grid-template-columns:1fr}
+  nav{display:none;position:absolute;top:64px;left:0;right:0;background:var(--panel);border-bottom:1px solid var(--line);padding:18px 20px;flex-direction:column;gap:14px;margin-left:0}
+  nav.open{display:flex}
+  nav a{font-size:16px}
+  .burger{display:flex}
+  .header-inner .btn-sm{margin-left:auto}
+  section{padding:56px 0}
+  .hero{padding:60px 0 56px}
+}
+@media (max-width:640px){.clock{display:none}}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container header-inner">
+    <a class="logo" href="#top">Alex<i>.</i></a>
+    <nav id="site-nav">
+      <a href="#works">Работы</a>
+      <a href="#prices">Цены</a>
+      <a href="#reviews">Отзывы</a>
+      <a href="#steps">Как заказать</a>
+      <a href="#about">Обо мне</a>
+    </nav>
+    <span class="clock">Москва · <b id="msk">--:--</b> МСК</span>
+    <!-- ЗАМЕНИТЕ your_username на свой ник в Telegram (здесь и ниже) -->
+    <a class="btn btn-sm" href="https://t.me/your_username" target="_blank" rel="noopener">Написать</a>
+    <button class="burger" id="burger" aria-label="Меню" aria-expanded="false" aria-controls="site-nav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="container">
+      <span class="badge"><i></i>Свободен для новых проектов</span>
+      <h1>Делаю сайты для бизнеса. С заявками и оплатой.</h1>
+      <p class="lead">Лендинги, магазины, запись к мастеру и Telegram-боты. Пишу с нуля, без шаблонов и конструкторов. Цены — <strong class="hl">от 10 000 ₽</strong>, срок — от 5 дней.</p>
+      <div class="hero-actions">
+        <a class="btn" href="https://t.me/your_username" target="_blank" rel="noopener">Написать в Telegram</a>
+        <a class="btn btn-ghost" href="#works">Смотреть работы</a>
+      </div>
+      <div class="hero-facts">
+        <div><b>от 10 000 ₽</b><span>стоимость сайта</span></div>
+        <div><b>от 5 дней</b><span>срок запуска</span></div>
+        <div><b>1+ год</b><span>в разработке</span></div>
+        <div><b>Напрямую</b><span>без менеджеров</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+      <span class="kicker">Услуги</span>
+      <h2>Что входит в работу.</h2>
+      <p class="section-sub">Один человек отвечает за всё: дизайн, тексты, код и запуск.</p>
+      <div class="grid grid-3">
+        <div class="card">
+          <h3>Сайт целиком</h3>
+          <p>Дизайн, тексты, вёрстка, формы и версия для телефона. Не нужно искать отдельных дизайнера и программиста.</p>
+        </div>
+        <div class="card">
+          <h3>Заявки и оплата</h3>
+          <p>Заявки приходят в Telegram или CRM. Подключаю онлайн-оплату, запись и панель управления.</p>
+        </div>
+        <div class="card">
+          <h3>Скорость и удобство</h3>
+          <p>Без тяжёлых анимаций и экранов загрузки: сайт быстро открывается и одинаково удобен на телефоне и компьютере.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="works">
+    <div class="container">
+      <span class="kicker">Портфолио</span>
+      <h2>Работы.</h2>
+      <p class="section-sub">Примеры проектов. В каждом можно записаться, оставить заявку или собрать корзину.</p>
+      <!-- ЗАМЕНИТЕ на свои проекты: названия, описания, цены, ссылки и скриншоты (вместо блока .shot можно вставить <img>) -->
+      <div class="works-grid">
+        <article class="work">
+          <div class="shot shot-a" aria-hidden="true">
+            <div class="shot-bar"><i></i><i></i><i></i></div>
+            <div class="shot-name">БРУСОК</div>
+            <div class="shot-mock"><span style="width:72%"></span><span style="width:48%"></span><em></em></div>
+          </div>
+          <div class="work-body">
+            <div class="tags"><span class="tag">Барбершоп</span><span class="tag">Запись</span><span class="tag">Прайс</span></div>
+            <h3>Брусок</h3>
+            <p>Запись на одном экране: услуга, мастер, день и время. Прайс и команда — на отдельных страницах.</p>
+            <div class="work-meta"><span>от <b>25 000 ₽</b> · 2–3 недели</span><a class="work-link" href="#">Открыть →</a></div>
+          </div>
+        </article>
+        <article class="work">
+          <div class="shot shot-b" aria-hidden="true">
+            <div class="shot-bar"><i></i><i></i><i></i></div>
+            <div class="shot-name">ПЛАСТ</div>
+            <div class="shot-mock"><span style="width:64%"></span><span style="width:40%"></span><em></em></div>
+          </div>
+          <div class="work-body">
+            <div class="tags"><span class="tag">Магазин</span><span class="tag">Корзина</span><span class="tag">Оплата</span></div>
+            <h3>Пласт</h3>
+            <p>Магазин одежды: каталог, корзина и онлайн-оплата. Заказы владельцу приходят в Telegram.</p>
+            <div class="work-meta"><span>от <b>40 000 ₽</b> · 3–4 недели</span><a class="work-link" href="#">Открыть →</a></div>
+          </div>
+        </article>
+        <article class="work">
+          <div class="shot shot-c" aria-hidden="true">
+            <div class="shot-bar"><i></i><i></i><i></i></div>
+            <div class="shot-name">СТАРТ</div>
+            <div class="shot-mock"><span style="width:70%"></span><span style="width:52%"></span><em></em></div>
+          </div>
+          <div class="work-body">
+            <div class="tags"><span class="tag">Лендинг</span><span class="tag">Заявки</span></div>
+            <h3>Старт</h3>
+            <p>Одна страница под одну услугу: оффер, преимущества, цены и форма заявки. Запуск за неделю.</p>
+            <div class="work-meta"><span>от <b>10 000 ₽</b> · 5–7 дней</span><a class="work-link" href="#">Открыть →</a></div>
+          </div>
+        </article>
+        <article class="work">
+          <div class="shot shot-d" aria-hidden="true">
+            <div class="shot-bar"><i></i><i></i><i></i></div>
+            <div class="shot-name">БОТ</div>
+            <div class="shot-mock"><span style="width:60%"></span><span style="width:44%"></span><em></em></div>
+          </div>
+          <div class="work-body">
+            <div class="tags"><span class="tag">Telegram</span><span class="tag">Заявки</span><span class="tag">Оплата</span></div>
+            <h3>Бот заявок</h3>
+            <p>Принимает заявки и оплату, напоминает клиентам о записи, владельцу присылает сводку за день.</p>
+            <div class="work-meta"><span>от <b>15 000 ₽</b> · 1–2 недели</span><a class="work-link" href="#">Открыть →</a></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="prices">
+    <div class="container">
+      <span class="kicker">Цены</span>
+      <h2>Понятные цены — от 10 000 ₽.</h2>
+      <p class="section-sub">Точную стоимость назову после короткого обсуждения. Оценка бесплатна. Оплата в два этапа: 50% до начала и 50% после приёмки.</p>
+      <div class="grid grid-3">
+        <div class="card price-card">
+          <h3>Лендинг</h3>
+          <div class="price"><small>от</small> 10 000 ₽</div>
+          <div class="term">срок 5–7 дней</div>
+          <ul class="checks">
+            <li>Одна страница под услугу или товар</li>
+            <li>Дизайн и тексты</li>
+            <li>Форма заявки в Telegram</li>
+            <li>Версия для телефона</li>
+            <li>Подключение домена</li>
+          </ul>
+          <a class="btn btn-ghost" href="https://t.me/your_username" target="_blank" rel="noopener">Обсудить проект</a>
+        </div>
+        <div class="card price-card plan-featured">
+          <span class="plan-badge">Чаще выбирают</span>
+          <h3>Сайт с заявками</h3>
+          <div class="price"><small>от</small> 25 000 ₽</div>
+          <div class="term">срок 2–3 недели</div>
+          <ul class="checks">
+            <li>Несколько страниц или каталог</li>
+            <li>Запись, бронирование, формы</li>
+            <li>Заявки в Telegram или CRM</li>
+            <li>Базовое SEO и аналитика</li>
+            <li>30 дней поддержки после запуска</li>
+          </ul>
+          <a class="btn" href="https://t.me/your_username" target="_blank" rel="noopener">Обсудить проект</a>
+        </div>
+        <div class="card price-card">
+          <h3>Магазин</h3>
+          <div class="price"><small>от</small> 40 000 ₽</div>
+          <div class="term">срок 3–4 недели</div>
+          <ul class="checks">
+            <li>Каталог и корзина</li>
+            <li>Онлайн-оплата</li>
+            <li>Панель управления заказами</li>
+            <li>Обучение работе с сайтом</li>
+            <li>30 дней поддержки после запуска</li>
+          </ul>
+          <a class="btn btn-ghost" href="https://t.me/your_username" target="_blank" rel="noopener">Обсудить проект</a>
+        </div>
+      </div>
+      <p class="pricing-note">Нужен Telegram-бот — от 15 000 ₽, срок 1–2 недели. Домен и хостинг оплачиваются отдельно: помогу выбрать и настроить, для небольших сайтов хостинг бесплатный.</p>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <span class="kicker">Обо мне</span>
+      <h2>Alex.</h2>
+      <div class="about">
+        <div class="card about-text">
+          <p>Мне 19, живу в Москве. Больше года делаю сайты и Telegram-ботов: запись к мастеру, магазины, бронирование, боты для заявок и оплаты.</p>
+          <p>Дизайн, тексты, код и запуск беру на себя. Менеджеров нет — вы пишете напрямую тому, кто делает ваш проект.</p>
+          <p>Сначала разбираюсь, что должен сделать посетитель, под это строю страницу и только потом занимаюсь красотой. Каждый экран проверяю на телефоне.</p>
+        </div>
+        <div class="card">
+          <div class="facts">
+            <div><b>19 лет</b><span>возраст</span></div>
+            <div><b>1+ год</b><span>в разработке</span></div>
+            <div><b>Москва</b><span>часовой пояс МСК</span></div>
+            <div><b>Сайты и боты</b><span>всё делаю сам</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="reviews">
+    <div class="container">
+      <span class="kicker">Отзывы</span>
+      <h2>Что говорят клиенты.</h2>
+      <p class="section-sub">Средняя оценка — 5,0.</p>
+      <!-- ЗАМЕНИТЕ на реальные отзывы клиентов -->
+      <div class="grid grid-3">
+        <article class="card">
+          <div class="review-head"><b>Игорь</b><span class="stars" aria-label="Оценка 5 из 5">★★★★★</span></div>
+          <p>«Записи перестали теряться: клиенты записываются сами, мне приходят уведомления. Сделал быстро и всё объяснил».</p>
+          <div class="review-who">Барбершоп · сайт с записью</div>
+        </article>
+        <article class="card">
+          <div class="review-head"><b>Марина</b><span class="stars" aria-label="Оценка 5 из 5">★★★★★</span></div>
+          <p>«Собрал корзину и оплату, показал, как добавлять товары. Сайт открывается мгновенно даже на старом телефоне».</p>
+          <div class="review-who">Магазин одежды · интернет-магазин</div>
+        </article>
+        <article class="card">
+          <div class="review-head"><b>Дмитрий</b><span class="stars" aria-label="Оценка 5 из 5">★★★★★</span></div>
+          <p>«Обсудили задачу в понедельник — в пятницу уже принимал заявки с сайта. Правки вносил без споров».</p>
+          <div class="review-who">Автосервис · лендинг</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="steps">
+    <div class="container">
+      <span class="kicker">Как заказать</span>
+      <h2>Четыре шага.</h2>
+      <p class="section-sub">От первого сообщения до работающего сайта.</p>
+      <ol class="steps">
+        <li><h3>Пишете в Telegram</h3><p>Коротко опишите проект и пришлите сайты, которые нравятся.</p></li>
+        <li><h3>Обсуждаем</h3><p>Задаю вопросы, предлагаю решение, называю точный срок и цену.</p></li>
+        <li><h3>Смотрите черновик</h3><p>Показываю живую страницу по ссылке, а не картинки. Вносим правки.</p></li>
+        <li><h3>Запускаем</h3><p>Подключаю домен и заявки, показываю, как всем пользоваться.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="container">
+      <span class="kicker">Вопросы</span>
+      <h2>Частые вопросы.</h2>
+      <p class="section-sub">Если вопроса нет в списке — просто напишите, отвечу лично.</p>
+      <div class="faq">
+        <details>
+          <summary>Почему цены от 10 000 ₽?</summary>
+          <p>Лендинг — это одна страница с формой заявки. Небольшой объём — небольшая цена. Сложные проекты стоят дороже, вилку называю сразу после обсуждения.</p>
+        </details>
+        <details>
+          <summary>Что нужно от меня, чтобы начать?</summary>
+          <p>Описание задачи и пара примеров сайтов, которые нравятся. Тексты и фото помогу подготовить сам.</p>
+        </details>
+        <details>
+          <summary>Кто платит за домен и хостинг?</summary>
+          <p>Домен — примерно 200–1000 ₽ в год. Для лендингов и небольших сайтов хостинг бесплатный. Всё оформляю и настраиваю сам.</p>
+        </details>
+        <details>
+          <summary>Что будет после запуска?</summary>
+          <p>30 дней бесплатно правлю всё, что связано с моей работой. Дальше — поддержка по договорённости.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="contact-card">
+        <h2>Есть идея для сайта? Напишите.</h2>
+        <p>Отвечу, сколько это займёт и сколько будет стоить. Первый разговор ни к чему не обязывает.</p>
+        <div class="contact-actions">
+          <a class="btn" href="https://t.me/your_username" target="_blank" rel="noopener">Написать в Telegram</a>
+          <!-- ЗАМЕНИТЕ почту на свою -->
+          <a class="btn btn-ghost" href="mailto:hello@example.com">Написать на почту</a>
+        </div>
+        <p class="contact-note">Отвечаю лично, обычно в течение часа.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <span>© <span id="year">2026</span> Alex · Москва · Сайты и Telegram-боты</span>
+    <span><a href="https://t.me/your_username" target="_blank" rel="noopener">Telegram</a> &nbsp;·&nbsp; <a href="#top">Наверх ↑</a></span>
+  </div>
+</footer>
+
+<script>
+// Мобильное меню
+var burger = document.getElementById("burger");
+var nav = document.getElementById("site-nav");
+burger.addEventListener("click", function () {
+  var open = nav.classList.toggle("open");
+  burger.setAttribute("aria-expanded", open ? "true" : "false");
+});
+nav.querySelectorAll("a").forEach(function (a) {
+  a.addEventListener("click", function () {
+    nav.classList.remove("open");
+    burger.setAttribute("aria-expanded", "false");
+  });
+});
+// Время в Москве
+var msk = document.getElementById("msk");
+var fmt = new Intl.DateTimeFormat("ru-RU", { hour: "2-digit", minute: "2-digit", timeZone: "Europe/Moscow" });
+function tick() { msk.textContent = fmt.format(new Date()); }
+tick();
+setInterval(tick, 30000);
+// Год в подвале
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
